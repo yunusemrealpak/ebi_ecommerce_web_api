@@ -1,7 +1,7 @@
 ﻿using ECommerceApp.Application.Interfaces.Repository;
 using ECommerceApp.Domain.Common;
 using Microsoft.EntityFrameworkCore;
-using Persistance.Context;
+using ECommerceApp.Persistance.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Persistance.Repositories
+namespace ECommerceApp.Persistance.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
