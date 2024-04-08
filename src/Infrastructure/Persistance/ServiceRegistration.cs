@@ -22,8 +22,20 @@ namespace Persistance
                            options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings"),
                                           b => b.MigrationsAssembly(typeof(ECommerceDbContext).Assembly.FullName)));
 
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+            //services.AddScoped<IProductRepository, ProductRepository>();
+            //services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
+
+            var assm = Assembly.GetExecutingAssembly();
+            var repositoryTypes = assm.GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.GetInterfaces().Any(i => i.Name == $"I{x.Name}"));
+
+            foreach (var type in repositoryTypes)
+            {
+                var interfaceType = type.GetInterface($"I{type.Name}");
+                if (interfaceType != null)
+                {
+                    services.AddScoped(interfaceType, type);
+                }
+            }
         }
     }
 }
