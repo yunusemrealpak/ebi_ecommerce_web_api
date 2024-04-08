@@ -13,7 +13,7 @@ namespace ECommerceApp.Domain.Entities
         public string Name { get; set; }
         public double Price { get; set; }
         public string? Description { get; set; }
-        public decimal StockCount { get; set; }
+        public int StockCount { get; set; }
         public ProductCategory ProductCategory { get; set; }
         public string ImageUrl { get; set; }
     }

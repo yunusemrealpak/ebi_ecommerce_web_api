@@ -40,14 +40,14 @@ namespace ECommerceApp.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("StockCount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("StockCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

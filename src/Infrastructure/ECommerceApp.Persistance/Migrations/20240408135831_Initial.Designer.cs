@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceApp.Persistance.Migrations
 {
     [DbContext(typeof(ECommerceDbContext))]
-    [Migration("20240408135029_Initial")]
+    [Migration("20240408135831_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -43,14 +43,14 @@ namespace ECommerceApp.Persistance.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("ProductCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("StockCount")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int>("StockCount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
