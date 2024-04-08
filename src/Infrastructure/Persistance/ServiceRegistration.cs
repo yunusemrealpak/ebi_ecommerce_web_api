@@ -1,8 +1,10 @@
-﻿using ECommerceApp.Domain.Common;
+﻿using ECommerceApp.Application.Interfaces.Repository;
+using ECommerceApp.Domain.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistance.Context;
+using Persistance.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,9 @@ namespace Persistance
             services.AddDbContext<ECommerceDbContext>(options =>
                            options.UseSqlServer(configuration.GetConnectionString("ConnectionStrings"),
                                           b => b.MigrationsAssembly(typeof(ECommerceDbContext).Assembly.FullName)));
+
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
         }
     }
 }
