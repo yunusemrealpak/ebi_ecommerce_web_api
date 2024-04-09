@@ -10,7 +10,7 @@ namespace ECommerceApp.Application.Interfaces.Repository
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {
-        Task<List<T>> GetAllAsync(Expression<Func<T, bool>> predicate);
+        Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null);
         Task<T?> GetByIdAsync(int id);
         Task<int> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);

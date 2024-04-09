@@ -34,8 +34,12 @@ namespace ECommerceApp.Persistance.Repositories
             return entity;
         }
 
-        public  Task<List<T>> GetAllAsync(Expression<Func<T, bool>> predicate)
+        public  Task<List<T>> GetAllAsync(Expression<Func<T, bool>>? predicate = null)
         {
+            if (predicate == null)
+            {
+                return _context.Set<T>().ToListAsync();
+            }
             return  _context.Set<T>().Where(predicate).ToListAsync();
         }
 
